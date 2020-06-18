@@ -37,7 +37,7 @@ function showSolutionsMessage( a, b, c ) {
   } else if (result.D === 0) {
     console.log(`Уравнение имеет один корень ${result.roots} = значение_корня`);
   } else if (result.D > 0) {
-    console.log(`Уравнение имеет два корня. ${result.roots[1]} = значение_корня_1, ${result.roots[2]} = значение_корня_2`);
+    console.log(`Уравнение имеет два корня. ${result.roots[0]} = значение_корня_1, ${result.roots[1]} = значение_корня_2`);
   }
 
 }
@@ -59,12 +59,13 @@ function getAverageScore(data) {
       averageData[subject] = getAverageMark(data[subject]);
   }
 
-  let arrayOfAverageMarks = [];
-  for (let subject in averageData) {
-    arrayOfAverageMarks.push(averageData[subject]);
-  }
+  // let arrayOfAverageMarks = [];
+  // for (let subject in averageData) {
+  //   arrayOfAverageMarks.push(averageData[subject]);
+  // }
 
-  averageData.average = getAverageMark(arrayOfAverageMarks);
+  //averageData.average = getAverageMark(arrayOfAverageMarks);
+  averageData.average = getAverageMark(Object.values(averageData));
   //averageData.average = getAverageMark([averageData.algebra, averageData.chemistry, averageData.english, averageData.french, averageData.geometry, averageData.music, averageData.physics, averageData.poetry, averageData.russian]);
   }
 
@@ -95,10 +96,11 @@ function getPersonData(secretData) {
 
 
 function getDecodedValue(secret) {
-  if (secret === 0) {
-    return 'Родриго';
-  }
-  if (secret === 1) {
-    return 'Эмильо';
-  }
+  // if (secret === 0) {
+  //   return 'Родриго';
+  // }
+  // if (secret === 1) {
+  //   return 'Эмильо';
+  // }
+  return (secret === 0) ? 'Родриго' : 'Эмильо';
 }
