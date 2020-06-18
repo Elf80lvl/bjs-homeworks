@@ -24,6 +24,20 @@ function getAverageMark(marks) {
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №3 писать здесь
-    // return verdict
+	// код для задачи №3 писать здесь
+	let now = Math.round((new Date()).getTime() / 1000); // Получить текущую дату в Unix Timestamp и записать в переменную now
+	console.log('now: ' + now);
+
+	let userDate = new Date(birthday);
+	console.log('userDate: ' + userDate);
+
+	birthday = Math.round(userDate.getTime() / 1000);
+	console.log('birthday: ' + birthday);
+
+	let diff = now - birthday;
+	console.log('diff: ' + diff);
+
+	let verdict = diff / 31556952;
+	console.log(verdict);
+    return verdict >= 18;
 }
