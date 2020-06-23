@@ -91,17 +91,19 @@ class Library {
     for (let i = 0; i < this.books.length; i++){
       if (this.books[i][type] === value) {
         return this.books[i];
-      } else return null;
+      }
     }
+    return null;
   }
 
 
   giveBookByName (bookName) {
     for (let i = 0; i < this.books.length; i++){
       if (this.books[i].name === bookName) {
-        this.books.splice(i, 1)[0];
-      } else return null;
+        return this.books.splice(i, 1)[0];
+      } 
     }
+    return null;
   }
 
   // giveBookByName (bookName) {
@@ -144,7 +146,7 @@ console.log(library.giveBookByName("Машина времени"));
 class StudentLog {
   constructor (studentName) {
     this.studentName = studentName;
-    //this.subject = [];
+    //this.subjects = [];
   }
 
   getName() {
@@ -153,11 +155,11 @@ class StudentLog {
 
   addGrade(grade, subject) {
     if (grade >= 1 && grade <= 5) {
-      this.subject = 
+      this[subject] = (new Array).push(grade);
     } else {
       console.log('Ошибка. Оценка должна быть в пределах от 1 до 5, ваша оценка: ' + grade);
     }
-    return Object.keys(this).length - 1; // Метод возвращает количество поставленных оценок по данному предмету.
+    //return Object.keys(this).length - 1; // Метод возвращает количество поставленных оценок по данному предмету.
   }
 
   getAverageBySubject(subject){
