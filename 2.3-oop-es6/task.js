@@ -87,19 +87,81 @@ class Library {
   }
 
   //Создайте метод findBookBy(type, value), который в качестве аргументов будет принимать ключ, по которому будет производиться поиск (тип, автор, название, год выпуска и пр.) и искомое значение. Метод должен возвращать книгу в случае успеха и null, если запрошенная книга не была найдена.
-  // findBookBy (type, value) {
-  //   for (let book in this.books) {
-  //     if(book[type] === value) return book[type];
+  findBookBy (type, value) {
+    for (let i = 0; i < this.books.length; i++){
+      if (this.books[i][type] === value) {
+        return this.books[i];
+      } else return null;
+    }
+  }
+
+
+  giveBookByName (bookName) {
+    for (let i = 0; i < this.books.length; i++){
+      if (this.books[i].name === bookName) {
+        this.books.splice(i, 1)[0];
+      } else return null;
+    }
+  }
+
+  // giveBookByName (bookName) {
+  //   for (let i = 0; i < this.books.length; i++){
+  //     if (this.books[i].name === bookName) {
+  //       const a = this.books.splice(i, 1)[0];
+  //       return a;
+  //     } else return null;
   //   }
-  //   return null;
   // }
 
-  findBookBy (type, value) {
-    for (let book in this.books) {
-      if(book[type] === value) return book[type].name;
-    }
-    return null;
-  }
+  // giveBookByName (bookName) {
+  //   let obj = this.books.find(obj => obj.name == bookName);
+  //   this.books.splice();
+  //   return obj;
+  // }
 
   
 }
+
+
+const library = new Library("Библиотека имени Ленина");
+
+library.addBook(new DetectiveBook("Артур Конан Дойл", "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008));
+library.addBook(new FantasticBook("Аркадий и Борис Стругацкие", "Пикник на обочине", 1972, 168));
+library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+library.addBook(new Magazine("Мурзилка", 1924, 60));
+
+console.log(library.findBookBy("name", 'Мурзилка'));
+console.log(library.findBookBy("releaseDate", 1924));
+
+console.log(library.giveBookByName("Машина времени"));
+
+//library.books.find(a => a.name === 'Мурзилка');
+
+
+
+
+//*****************Задача 3
+class StudentLog {
+  constructor (studentName) {
+    this.studentName = studentName;
+    //this.subject = [];
+  }
+
+  getName() {
+    return this.studentName;
+  }
+
+  addGrade(grade, subject) {
+    if (grade >= 1 && grade <= 5) {
+      this.subject = 
+    } else {
+      console.log('Ошибка. Оценка должна быть в пределах от 1 до 5, ваша оценка: ' + grade);
+    }
+    return Object.keys(this).length - 1; // Метод возвращает количество поставленных оценок по данному предмету.
+  }
+
+  getAverageBySubject(subject){
+    
+  }
+}
+
