@@ -1,8 +1,8 @@
 function parseCount(input) {
-  //debugger;
-  if (isNaN(parseInt(input))) {
+  a = parseInt(input);
+  if (isNaN(a)) {
     throw new Error("Невалидное значение");
-  } else return Number.parseInt(input);
+  } else return a;
 }
 
 
@@ -16,6 +16,7 @@ function validateCount(input) {
 
 
 //***********Задача 2 */
+//Для конструктора класса треугольника конструкция if/else достаточно сложная…можно было сделать просто проверку if с выбрасыванием исключения, а дальше после условия или перед ним выполнять присваивания…условие ведь не сработает.
 class Triangle {
   constructor (a, b, c){
     if ( (a + b >= c) && (a + c >= b) && (b + c >= a) ) {
@@ -28,7 +29,6 @@ class Triangle {
     }
   }
   
-
   getPerimeter (){
     return this.a + this.b + this.c;
   }
@@ -40,7 +40,7 @@ class Triangle {
   }
 }
 
-
+//Для возвращаемого объекта, если описать его свойствами со значениями стрелочных функций, то запись будет заметно короче, примерно как у вас строки 65-68, только функции должны быть.
 function getTriangle(a, b, c) {
   try {
     return new Triangle(a, b, c);
