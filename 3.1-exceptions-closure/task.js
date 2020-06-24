@@ -45,14 +45,22 @@ function getTriangle(a, b, c) {
   try {
     return new Triangle(a, b, c);
   } catch{
-    return new Triangle(a, b, c).getArea();
+    return {
+      getPerimeter (){
+        return "Ошибка! Неправильный треугольник";
+      },
+      getArea(){
+        return "Ошибка! Неправильный треугольник";
+      }
+      
+    }
    
   }
 
 }
 
 //per: new Triangle(a, b, c).prototype.getPerimeter = function(){return "Ошибка! Неправильный треугольник"},
-      //area: new Triangle(a, b, c).protorype.getArea = function(){return "Ошибка! Неправильный треугольник"}
+//area: new Triangle(a, b, c).protorype.getArea = function(){return "Ошибка! Неправильный треугольник"}
 
 // return {
 //   perimeter: "Ошибка! Неправильный треугольник",
