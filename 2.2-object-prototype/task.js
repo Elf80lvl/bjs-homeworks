@@ -39,5 +39,5 @@ function checkBirthday(birthday) {
 
 	let verdict = diff / 31556952;
 	console.log(verdict);
-    return verdict >= 18;
+  return verdict >= 18;
 }
