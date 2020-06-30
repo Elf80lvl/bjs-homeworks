@@ -9,18 +9,22 @@ class AlarmClock {
       throw new Error ('timerId не передан!');
     }
 
-    if (this.timerId == timerId2) {
-      console.error('такой ID уже существует');
-    } else {
-      this.alarmCollection.push(
-        {id: timerId2,
-         time: timeToStart,
-         callback: fn
-        });
-    }
+    // if (this.timerId == timerId2) {
+    //   console.error('такой ID уже существует');
+    // } else {
+    //   this.alarmCollection.push(
+    //     {id: timerId2,
+    //      time: timeToStart,
+    //      callback: fn
+    //     });
+    // }
 
-    this.timerId = timerId2;
+    const found = this.alarmCollection.some(el => el.id === timerId2);
+    if (!found) {
+      this.alarmCollection.push({ id: timerId2, time: timeToStart, callback: fn});
+    }else console.error('такой ID уже существует');
   }
+
 
   removeClock(idToFind){
     let elementToDelete = this.alarmCollection.filter(e => e.id == idToFind)[0];
@@ -32,6 +36,7 @@ class AlarmClock {
     return false;
   }
 
+
   getCurrentFormattedTime(){
     //let currentTime = new Date().toLocaleTimeString();
     let currentTime = new Date().toTimeString().slice(0,8); //HH:MM:SS
@@ -39,12 +44,17 @@ class AlarmClock {
     return currentTime;
   }
 
+  
   start(){
     function checkClock(alarm){
-      if (getCurrentFormattedTime() == alarm.time) return this.callback;
+      if (getCurrentFormattedTime() === alarm.time) alarm.callback;
     }
 
-    
+    let SetIntId;
+
+    // if (this.) {
+
+    // }
 
   }
 
