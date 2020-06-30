@@ -27,8 +27,8 @@ class AlarmClock {
 
 
   removeClock(idToFind){
-    let elementToDelete = this.alarmCollection.filter(e => e.id == idToFind)[0];
-    let index = this.alarmCollection.indexOf(elementToDelete);
+    const elementToDelete = this.alarmCollection.filter(e => e.id == idToFind)[0];
+    const index = this.alarmCollection.indexOf(elementToDelete);
     if (index !== -1) {
       this.alarmCollection.splice(index, 1);
       return true;
@@ -59,7 +59,7 @@ class AlarmClock {
 
 
   stop(){
-    if (this.timerId != undefined) {
+    if (this.timerId != null) {
       clearInterval(this.timerId);
       this.timerId = null;
     }
@@ -67,7 +67,7 @@ class AlarmClock {
 
 
   printAlarms() {
-    this.alarmCollection.forEach((a) => console.log(a.id, a.time));
+    this.alarmCollection.forEach((element) => console.log(element.id, element.time));
   }
 
 
@@ -78,6 +78,20 @@ class AlarmClock {
 
 }
 
-function testCase () {
-  let a = new AlarmClock();
-}
+
+// function testCase () {
+//   let a = new AlarmClock();
+//   a.addClock('18:13', () => console.log('пора вставать'), 1);
+//   a.addClock('18:14', () => {console.log('Давай, вставай уже!'); a.removeClock(2)}, 2);
+//   a.addClock('18:15', () => {
+//     console.log('Вставай, а то проспишь!');
+//     //a.clearAlarms();
+//     a.printAlarms();
+//   },3);
+  
+//   a.addClock('18:13', () => console.log('пора вставать'), 1);
+
+//   a.printAlarms();
+//   a.start();
+
+// }
