@@ -37,7 +37,7 @@ class AlarmClock {
   }
 
 
-  getCurrentFormattedTime(){
+  getCurrentFormattedTime = () => {
     //let currentTime = new Date().toLocaleTimeString();
     let currentTime = new Date().toTimeString().slice(0,8); //HH:MM:SS
     currentTime = currentTime.substr(0, currentTime.length - 3); //приведение в формат HH:MM
@@ -46,12 +46,12 @@ class AlarmClock {
 
 
   start(){
-    function checkClock(alarm){
+    const checkClock = (alarm) => {
       if (this.getCurrentFormattedTime() === alarm.time) alarm.callback();
     }
 
     if (!this.timerId) {
-      this.timerId = setInterval(function(){
+      this.timerId = setInterval(() => {
         this.alarmCollection.forEach(checkClock);
       }, 1000); 
     }
@@ -79,19 +79,19 @@ class AlarmClock {
 }
 
 
-// function testCase () {
-//   let a = new AlarmClock();
-//   a.addClock('18:13', () => console.log('пора вставать'), 1);
-//   a.addClock('18:14', () => {console.log('Давай, вставай уже!'); a.removeClock(2)}, 2);
-//   a.addClock('18:15', () => {
-//     console.log('Вставай, а то проспишь!');
-//     //a.clearAlarms();
-//     a.printAlarms();
-//   },3);
+function testCase () {
+  let a = new AlarmClock();
+  a.addClock('11:13', () => console.log('пора вставать'), 1);
+  a.addClock('11:14', () => {console.log('Давай, вставай уже!'); a.removeClock(2)}, 2);
+  a.addClock('11:15', () => {
+    console.log('Вставай, а то проспишь!');
+    a.clearAlarms();
+    a.printAlarms();
+  },3);
   
-//   a.addClock('18:13', () => console.log('пора вставать'), 1);
+  a.addClock('11:13', () => console.log('пора вставать'), 1);
 
-//   a.printAlarms();
-//   a.start();
+  a.printAlarms();
+  a.start();
 
-// }
+}
